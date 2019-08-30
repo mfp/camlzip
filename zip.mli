@@ -57,6 +57,10 @@ type in_file
 val open_in: string -> in_file
           (** Open the ZIP file with the given filename.  Return a
               handle opened for reading from this file. *)
+val open_in_chan: ?filename:string -> Pervasives.in_channel -> in_file
+          (** Open the ZIP file in the supplied [in_channel], which must be
+              seekable. The optional [filename] parameter is used in the
+              {!Error} exceptions raised on error (defaults to ""). *)
 val entries: in_file -> entry list
           (** Return a list of all entries in the given ZIP file. *)
 val comment: in_file -> string
